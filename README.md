@@ -6,4 +6,4 @@ display the selected image inside the main activity along with a description
 
 pictures in a recycler view grid layout          |      After clicking an image
 :...............................................:|:...............................:
-![RecyclerView Before Click](beforeclick.png?raw=true width=250) |   ![After clicking an image](afterclick.png?raw=true width=250)
+![RecyclerView Before Click](./beforeclick.png?raw=true width=250 "Before Click") |   ![After clicking an image](./afterclick.png?raw=true width=250 "After Click")
