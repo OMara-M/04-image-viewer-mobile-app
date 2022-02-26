@@ -4,10 +4,8 @@ This app allows a user to pick an image from a RecyclerView and once selected,
 display the selected image inside the main activity along with a description
 
 
-pictures in a recycler view grid layout          |      After clicking an image
+pictures in a recycler view grid layout:                After Clicking:
 
-:...............................................:|:...............................:
-
-<img src="beforeclick.png?raw=true" width="200"> |   <img src="afterlick.png?raw=true" width="200">
+<img src="beforeclick.png?raw=true" width="200">   <img src="afterlick.png?raw=true" width="200">
 
 
