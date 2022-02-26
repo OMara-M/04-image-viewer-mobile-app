@@ -5,6 +5,7 @@ display the selected image inside the main activity along with a description
 
 
 pictures in recycler grid layout          |      After clicking an image
+
 :...............................................:|:...........................................:
 <img src="beforeclick.png?raw=true" width="200"> |   <img src="afterclick.png?raw=true" width="200">
 
