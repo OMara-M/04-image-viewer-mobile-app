@@ -2,56 +2,45 @@ package edu.temple.photoviewer
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.widget.GridLayout
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class ImageActivity : AppCompatActivity() {
-    lateinit var pizzaName: TextView
-    lateinit var pizzaImage: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-        setContentView(R.layout.activity_main)
+        val imageData = createPizzaMenu()
 
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
-        pizzaName = findViewById(R.id.pizza_name)
-        pizzaImage = findViewById(R.id.pizza_image)
+        val imageView = findViewById<ImageView>(R.id.pizza_image)
+        val textView = findViewById<TextView>(R.id.pizza_name)
 
         recyclerView.layoutManager = GridLayoutManager(this, 4)
 
-        val imageList = listOf<Int>(
-            R.drawable.pizza2,
-            R.drawable.pizza3,
-            R.drawable.pizza4,
-            R.drawable.pizza5,
-            R.drawable.pizza6,
-            R.drawable.pizza7,
-            R.drawable.pizza8,
-            R.drawable.pizza9,
-            R.drawable.pizza10
+        val handleClick = { item: ImageData ->
+            imageView.setImageResource(item.resourceId)
+            textView.text = item.description
+        }
+
+        recyclerView.adapter = ImageAdapter(imageData, handleClick)
+    }
+
+    private fun createPizzaMenu(): Array<ImageData> {
+        return arrayOf(
+            ImageData(R.drawable.pizza1, "Margarita"),
+            ImageData(R.drawable.pizza2, "Tomato Chicken"),
+            ImageData(R.drawable.pizza3, "Peppers, Olive, Mushroom"),
+            ImageData(R.drawable.pizza4, "Peperoni"),
+            ImageData(R.drawable.pizza5, "Pepper Peperoni Sausage"),
+            ImageData(R.drawable.pizza6, "Peppers Onion Mushroom"),
+            ImageData(R.drawable.pizza7, "Peperoni 'well done'"),
+            ImageData(R.drawable.pizza8, "Hawaiian jalapeno"),
+            ImageData(R.drawable.pizza9, "Chef Combination"),
+            ImageData(R.drawable.pizza10, "Vegan Pizza")
         )
-
-        val pizzaNames = listOf<String>(
-            "PEPERONI PIZZA",
-            "PEPPER PIZZA",
-            "PEPERONI BUT SMALLER",
-            "PEPERONI AGAIN",
-            "MORE PEPPERONI",
-            "IM NOT SURE WHAT THIS IS",
-            "CHICKEN?",
-            "ITS A PIZZA",
-            "PIZZA FROM AT AN ANGLE",
-            "PIZZA AGAIN"
-        )
-
-        recyclerView.adapter = ImageAdapter(this, imageList, pizzaNames)
-
     }
 }

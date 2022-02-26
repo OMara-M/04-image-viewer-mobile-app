@@ -1,31 +1,38 @@
 package edu.temple.photoviewer
 
-import android.content.Context
-import android.location.GnssAntennaInfo
-import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import android.view.View
 import android.widget.ImageView
-import java.util.*
 
 class ImageAdapter(
-    val context: Context,
-    val images: List<Int>,
-    val names: List<String>,
-) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+    _imageDataItems: Array<ImageData>,
+    _handleClick: (ImageData) -> Unit,
+) : RecyclerView.Adapter<ImageAdapter.ViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(
-            R.layout.
+    private val imageDataItems = _imageDataItems
+    val handleClick = _handleClick
+
+    inner class ViewHolder(_view: ImageView) : RecyclerView.ViewHolder(_view) {
+
+        lateinit var item: ImageData
+        val imageView = _view.apply {
+            setOnClickListener { handleClick(item) }
+        }
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        return ViewHolder(ImageView(parent.context).apply {
+            layoutParams = ViewGroup.LayoutParams(200, 200)
+            }
         )
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        TODO("Not yet implemented")
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.imageView.setImageResource(imageDataItems[position].resourceId)
+        holder.item = imageDataItems[position]
     }
 
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+        return imageDataItems.size
     }
 }
