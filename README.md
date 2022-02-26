@@ -8,4 +8,4 @@ pictures in a recycler view grid layout          |      After clicking an image
 
 :...............................................:|:...............................:
 
-![RecyclerView Before Click](/beforeclick.png?raw=true "Before Click") |   ![After clicking an image](/afterclick.png?raw=true "After Click")
+![RecyclerView Before Click](/beforeclick.png=x250?raw=true "Before Click") |   ![After clicking an image](/afterclick.png=x250?raw=true "After Click")
